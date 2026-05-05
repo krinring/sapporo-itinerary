@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>札幌・小樽 旅のしおり｜6/18–20</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Shippori+Mincho:wght@400;600;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d5;
+    --accent: #c4622d;
+    --accent-light: #e8906a;
+    --muted: #7a7165;
+    --rule: #c8bfaa;
+    --day1: #2d4a6b;
+    --day2: #3d6b4a;
+    --day3: #6b3d2d;
+    --white: #fefcf7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif JP', serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.8;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(196,98,45,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 20%, rgba(45,74,107,0.3) 0%, transparent 60%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--day1), var(--accent), var(--day2));
+  }
+
+  .cover-inner { position: relative; z-index: 1; }
+
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+
+  .cover-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(38px, 8vw, 72px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(16px, 3vw, 24px);
+    font-weight: 400;
+    color: var(--accent-light);
+    margin-bottom: 32px;
+    letter-spacing: 0.05em;
+  }
+
+  .cover-date {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    padding: 8px 20px;
+    border: 1px solid rgba(245,240,232,0.3);
+    color: var(--paper);
+    opacity: 0.8;
+  }
+
+  .cover-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 40px 0 8px;
+    opacity: 0.3;
+  }
+  .cover-deco span { height: 1px; width: 60px; background: var(--rule); display: block; }
+
+  /* ── FLIGHT BAR ── */
+  .flight-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 20px;
+  }
+
+  .flight-bar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flight-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px dashed var(--rule);
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .flight-row:last-child { border-bottom: none; }
+
+  .flight-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .flight-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .flight-arrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-align: center;
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .flight-code {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* ── DAY SECTION ── */
+  .day-section {
+    margin-top: 56px;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+  }
+
+  .day-number {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--ink);
+    padding: 4px 10px 3px;
+    position: relative;
+    top: -2px;
+  }
+
+  .day-section:nth-child(1) .day-number { background: var(--day1); }
+  .day-section:nth-child(2) .day-number { background: var(--day2); }
+  .day-section:nth-child(3) .day-number { background: var(--day3); }
+
+  .day-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 600;
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .day-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: repeating-linear-gradient(to bottom, var(--rule) 0, var(--rule) 4px, transparent 4px, transparent 8px);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+    animation: fadeIn 0.4s ease both;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rule);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--rule);
+  }
+
+  .timeline-item.highlight::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+    width: 9px;
+    height: 9px;
+    left: -27px;
+    top: 6px;
+  }
+
+  .timeline-item.emoji-item::before { display: none; }
+
+  .item-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+  }
+
+  .item-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .item-emoji {
+    font-size: 16px;
+    line-height: 1.6;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .item-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .item-note {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 3px;
+    padding-left: 24px;
+  }
+
+  .item-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    background: var(--paper-dark);
+    color: var(--muted);
+    margin-left: 8px;
+    position: relative;
+    top: -1px;
+  }
+
+  .item-tag.warn {
+    background: rgba(196,98,45,0.12);
+    color: var(--accent);
+  }
+
+  /* ── FOODWALK BLOCK ── */
+  .foodwalk-block {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--day2);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    margin-left: -4px;
+  }
+
+  .foodwalk-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--day2);
+    margin-bottom: 12px;
+  }
+
+  .foodwalk-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .foodwalk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .foodwalk-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 2px;
+    min-width: 44px;
+  }
+
+  .foodwalk-content {}
+  .foodwalk-name {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .foodwalk-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── MOERE BLOCK ── */
+  .moere-block {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .moere-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .moere-tab {
+    flex: 1;
+    padding: 10px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    cursor: pointer;
+    background: var(--paper-dark);
+    color: var(--muted);
+    border: none;
+    border-right: 1px solid var(--rule);
+    transition: all 0.2s;
+  }
+  .moere-tab:last-child { border-right: none; }
+  .moere-tab.active {
+    background: var(--white);
+    color: var(--day3);
+    font-weight: 500;
+  }
+
+  .moere-content { display: none; padding: 16px 18px; }
+  .moere-content.active { display: block; }
+
+  .moere-route {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .route-step {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .route-arrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    padding-top: 3px;
+    min-width: 16px;
+  }
+
+  .route-text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .route-text strong {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .route-sub {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist-section {
+    margin-top: 48px;
+    padding: 28px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent);
+  }
+
+  .checklist-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .check-box {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--rule);
+    flex-shrink: 0;
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+
+  .check-item.done .check-box {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .check-item.done .check-box::after {
+    content: '✓';
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .check-item.done .check-text {
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+
+  .check-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .check-sub {
+    font-size: 11px;
+    color: var(--muted);
+    display: block;
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 40px 0 0;
+    opacity: 0.4;
+  }
+  .section-divider span { height: 1px; flex: 1; background: var(--rule); }
+  .section-divider em {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    font-style: normal;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── TRANSPORT NOTE ── */
+  .transport-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--paper-dark);
+    padding: 8px 12px;
+    margin: -8px 0 20px;
+    border-left: 2px solid var(--rule);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 40px 20px 60px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  /* ── PATTERN TABS (Day1/Day3) ── */
+  .pattern-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    border: 1.5px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .pattern-tab {
+    flex: 1;
+    padding: 11px 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    cursor: pointer;
+    background: var(--paper-dark);
+    color: var(--muted);
+    border: none;
+    border-right: 1.5px solid var(--ink);
+    transition: all 0.18s;
+    line-height: 1.4;
+  }
+  .pattern-tab:last-child { border-right: none; }
+  .pattern-tab.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .pattern-tab em {
+    display: block;
+    font-style: normal;
+    font-size: 9px;
+    opacity: 0.65;
+    margin-top: 2px;
+  }
+
+  .pattern-content { display: none; }
+  .pattern-content.active { display: block; }
+
+  /* ── SOFTCREAM HIGHLIGHT ── */
+  .softcream-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    margin: 0 0 20px;
+  }
+
+  .softcream-icon { font-size: 22px; line-height: 1; padding-top: 2px; }
+
+  .softcream-body {}
+  .softcream-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .softcream-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .cover { padding: 60px 24px 48px; }
+    .flight-row { gap: 8px; }
+    .day-header { flex-wrap: wrap; gap: 10px; }
+    .checklist-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="cover-inner">
+    <p class="cover-eyebrow">Travel Itinerary · 2025</p>
+    <h1 class="cover-title">札幌・小樽</h1>
+    <p class="cover-subtitle">旅のしおり</p>
+    <div class="cover-deco"><span></span><span></span></div>
+    <div class="cover-date">JUN 18 → JUN 20 · 2025</div>
+  </div>
+</header>
+
+<!-- FLIGHT BAR -->
+<section class="flight-bar">
+  <div class="flight-bar-inner">
+    <div class="flight-row">
+      <div>
+        <div class="flight-label">Departure · 6/18 Thu</div>
+        <div class="flight-time">08:45</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">成田国際空港 T3</div>
+        <div class="flight-code" style="margin-top:4px;">GK125</div>
+      </div>
+      <div class="flight-arrow">
+        ─── 1h 50m ───<br>→ 新千歳
+      </div>
+      <div style="text-align:right;">
+        <div class="flight-label">Arrival</div>
+        <div class="flight-time">10:35</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">新千歳空港 D</div>
+      </div>
+    </div>
+    <div class="flight-row">
+      <div>
+        <div class="flight-label">Departure · 6/20 Sat</div>
+        <div class="flight-time">19:20</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">新千歳空港</div>
+        <div class="flight-code" style="margin-top:4px;">IJ836</div>
+      </div>
+      <div class="flight-arrow">
+        ─── 1h 45m ───<br>→ 成田
+      </div>
+      <div style="text-align:right;">
+        <div class="flight-label">Arrival</div>
+        <div class="flight-time">21:05</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">成田国際空港 T3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- DAY 1 -->
+  <section class="day-section">
+    <div class="day-header">
+      <span class="day-number">Day 01</span>
+      <div class="day-title">札幌 — スープカレー・大通・藻岩山夜景</div>
+      <div class="day-meta">6/18 THU</div>
+    </div>
+
+    <div class="transport-note">🏨 宿泊：プレミアホテル 中島公園 札幌　／　地下鉄「中島公園」駅から徒歩5分・すすきのまで徒歩10分</div>
+
+    <!-- 新千歳ソフト（共通） -->
+    <div class="softcream-block">
+      <div class="softcream-icon">🍦</div>
+      <div class="softcream-body">
+        <div class="softcream-title">新千歳空港 着いてすぐ ソフトクリーム</div>
+        <div class="softcream-desc">国内線3F に多数の名店あり。スノーブランドパーラー・HOKKAIDO KONOSHA Milk Stand などが8:00〜営業。荷物受け取り後にそのままGO。</div>
+      </div>
+    </div>
+
+    <!-- 2パターン切り替え -->
+    <div class="pattern-tabs">
+      <button class="pattern-tab active" onclick="switchPattern(this,'d1a')">
+        🅐 大通 → どんぐり → 大通公園
+        <em>1日目に大通をしっかり回る</em>
+      </button>
+      <button class="pattern-tab" onclick="switchPattern(this,'d1b')">
+        🅑 スープカレー → 狸小路 中心
+        <em>3日目に大通を回すパターン</em>
+      </button>
+    </div>
+
+    <!-- パターンA -->
+    <div id="pat-d1a" class="pattern-content active">
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="item-time">10:35</div>
+          <div class="item-main"><div class="item-emoji">✈️</div><div class="item-name">新千歳空港 着</div></div>
+          <div class="item-note">🍦ソフトクリームタイム（10〜20分）→ 快速エアポートで札幌駅へ（約37分・1,150円）</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">11:30</div>
+          <div class="item-main"><div class="item-emoji">🏨</div><div class="item-name">ホテルへ荷物預け</div></div>
+          <div class="item-note">札幌駅から地下鉄南北線「中島公園」駅まで約10分。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">12:00</div>
+          <div class="item-main"><div class="item-emoji">🥐</div><div class="item-name">どんぐり 大通店</div></div>
+          <div class="item-note">⭐4.4 大通西1丁目・ル・トロワ1F。10:00〜21:00営業。テレビ塔目の前。好きなパンを選んでテイクアウト、大通公園のベンチでそのまま食べるのが◎</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">12:30〜13:30</div>
+          <div class="item-main"><div class="item-emoji">🌳</div><div class="item-name">大通公園 散策</div></div>
+          <div class="item-note">どんぐりのパンを持って東端〜西端まで。テレビ塔・噴水・花壇。6月は緑ピーク。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">13:45</div>
+          <div class="item-main"><div class="item-emoji">🍛</div><div class="item-name">スープカレー奥芝商店 駅前創成寺</div><span class="item-tag warn">要並び</span></div>
+          <div class="item-note">⭐4.6 えびだしが絶品。大通公園から徒歩8分。14時台は比較的列が短め。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">15:30</div>
+          <div class="item-main"><div class="item-emoji">🛍</div><div class="item-name">狸小路 散策・カフェ休憩</div></div>
+          <div class="item-note">奥芝商店から徒歩5分。ゆっくり1時間半。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">17:00</div>
+          <div class="item-main"><div class="item-emoji">🏨</div><div class="item-name">ホテルチェックイン・一休み</div></div>
+          <div class="item-note">狸小路から地下鉄「中島公園」まで1駅・約15分。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">18:00</div>
+          <div class="item-main"><div class="item-emoji">🚃</div><div class="item-name">ホテル → 藻岩山ロープウェイ入口</div></div>
+          <div class="item-note">地下鉄「中島公園」→「すすきの」乗換 → 市電「ロープウェイ入口」下車 → 無料シャトル（15分おき）。合計約30〜35分。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">18:40〜20:30</div>
+          <div class="item-main"><div class="item-emoji">🚡</div><div class="item-name">藻岩山ロープウェイ＋山頂展望台</div></div>
+          <div class="item-note">往復2,100円。6月日没は20時頃 → 夕焼け＋夜景を両方堪能。山頂でも🍦ソフトクリームあり。運行22:00まで。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">21:00〜</div>
+          <div class="item-main"><div class="item-emoji">🍺</div><div class="item-name">すすきの周辺で夕食</div></div>
+          <div class="item-note">ホテルまで徒歩10分圏内。翌日小樽なのでラーメンはお預け。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- パターンB -->
+    <div id="pat-d1b" class="pattern-content">
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="item-time">10:35</div>
+          <div class="item-main"><div class="item-emoji">✈️</div><div class="item-name">新千歳空港 着</div></div>
+          <div class="item-note">🍦ソフトクリームタイム（10〜20分）→ 快速エアポートで札幌駅へ（約37分・1,150円）</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">11:30</div>
+          <div class="item-main"><div class="item-emoji">🏨</div><div class="item-name">ホテルへ荷物預け</div></div>
+          <div class="item-note">札幌駅から地下鉄南北線「中島公園」駅まで約10分。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">12:00</div>
+          <div class="item-main"><div class="item-emoji">🍛</div><div class="item-name">スープカレー奥芝商店 駅前創成寺</div><span class="item-tag warn">要並び</span></div>
+          <div class="item-note">⭐4.6 えびだしが絶品。11:00開店なので12時台は比較的列が短め。約90分。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">13:30</div>
+          <div class="item-main"><div class="item-emoji">🛍</div><div class="item-name">狸小路 散策・カフェ休憩</div></div>
+          <div class="item-note">アーケード商店街をゆっくり2時間。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">16:00</div>
+          <div class="item-main"><div class="item-emoji">🏨</div><div class="item-name">ホテルチェックイン・一休み</div></div>
+          <div class="item-note">狸小路から地下鉄「中島公園」まで1駅・約15分。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">18:00</div>
+          <div class="item-main"><div class="item-emoji">🚃</div><div class="item-name">ホテル → 藻岩山ロープウェイ入口</div></div>
+          <div class="item-note">地下鉄「中島公園」→「すすきの」乗換 → 市電「ロープウェイ入口」下車 → 無料シャトル（15分おき）。合計約30〜35分。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">18:40〜20:30</div>
+          <div class="item-main"><div class="item-emoji">🚡</div><div class="item-name">藻岩山ロープウェイ＋山頂展望台</div></div>
+          <div class="item-note">往復2,100円。6月日没は20時頃 → 夕焼け＋夜景を両方堪能。山頂でも🍦ソフトクリームあり。運行22:00まで。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">21:00〜</div>
+          <div class="item-main"><div class="item-emoji">🍺</div><div class="item-name">すすきの周辺で夕食</div></div>
+          <div class="item-note">ホテルまで徒歩10分圏内。翌日小樽なのでラーメンはお預け。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day-section">
+    <div class="day-header">
+      <span class="day-number">Day 02</span>
+      <div class="day-title">小樽 — 食べ歩き・ガラス体験・海鮮・クルーズ</div>
+      <div class="day-meta">6/19 FRI</div>
+    </div>
+
+    <div class="transport-note">🏨 宿泊：ホリデイ・イン＆スイーツ 札幌大通公園　／　大通公園まで徒歩2分・大通駅まで徒歩4分</div>
+
+    <div class="timeline">
+
+      <div class="timeline-item highlight">
+        <div class="item-time">7:30〜8:30</div>
+        <div class="item-main">
+          <div class="item-emoji">🍳</div>
+          <div class="item-name">ホテル朝食（ホリデイ・イン＆スイーツ 札幌大通公園）</div>
+        </div>
+        <div class="item-note">ゆっくり1時間。ホテルは大通駅まで徒歩4分なので出発はスムーズ。</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="item-time">8:50</div>
+        <div class="item-main">
+          <div class="item-emoji">🚶</div>
+          <div class="item-name">ホテル出発 → 大通駅へ</div>
+        </div>
+        <div class="item-note">徒歩4分。地下鉄東西線「大通」→「さっぽろ」1駅（約2分）で札幌駅。</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="item-time">9:10</div>
+        <div class="item-main">
+          <div class="item-emoji">🚃</div>
+          <div class="item-name">札幌駅 発 JR快速エアポート</div>
+        </div>
+        <div class="item-note">9:10発 → 南小樽 9:39着（約29分・750円）</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="item-time">9:39</div>
+        <div class="item-main">
+          <div class="item-emoji">🚉</div>
+          <div class="item-name">南小樽駅 着</div>
+        </div>
+        <div class="item-note">ここから堺町通り南端へ徒歩7分。</div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="item-time">9:50〜11:15</div>
+        <div class="item-main">
+          <div class="item-emoji">🍦</div>
+          <div class="item-name">堺町通り 食べ歩き</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOODWALK BLOCK -->
+    <div class="foodwalk-block">
+      <div class="foodwalk-title">🗺 食べ歩きルート（南→北）</div>
+      <div class="foodwalk-items">
+        <div class="foodwalk-item">
+          <div class="foodwalk-time">〜10:10</div>
+          <div class="foodwalk-content">
+            <div class="foodwalk-name">🌈 小樽レインボーソフトクリーム</div>
+            <div class="foodwalk-desc">7層のカラフルソフト。映えスポットとしても◎ 堺町通り南端</div>
+          </div>
+        </div>
+        <div class="foodwalk-item">
+          <div class="foodwalk-time">〜10:45</div>
+          <div class="foodwalk-content">
+            <div class="foodwalk-name">🎂 LeTAO本店</div>
+            <div class="foodwalk-desc">名物「ドゥーブルフロマージュ」チーズケーキをイートイン。お土産購入も</div>
+          </div>
+        </div>
+        <div class="foodwalk-item">
+          <div class="foodwalk-time">〜11:10</div>
+          <div class="foodwalk-content">
+            <div class="foodwalk-name">🥛 小樽ミルクプラント</div>
+            <div class="foodwalk-desc">北海道産ミルクのソフトクリーム。LeTAOから徒歩5分（11:00開店）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item highlight">
+        <div class="item-time">11:30〜12:30</div>
+        <div class="item-main">
+          <div class="item-emoji">🫧</div>
+          <div class="item-name">ガラス工房NAKAMORI　ガラス吹き体験</div>
+          <span class="item-tag warn">要事前予約</span>
+        </div>
+        <div class="item-note">⭐4.5 自分だけのグラスを制作。1人約20分×2人＝約60分。日曜定休・6/19金は営業。</div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="item-time">13:00</div>
+        <div class="item-main">
+          <div class="item-emoji">🐟</div>
+          <div class="item-name">和牛海鮮 天然まぐろ専門店 といまぐろ</div>
+          <span class="item-tag warn">売り切れ注意</span>
+        </div>
+        <div class="item-note">⭐4.9 ライスと海苔でまぐろを包むスタイルが唯一無二。11〜17時営業。13時台到着が安心。</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="item-time">14:15</div>
+        <div class="item-main">
+          <div class="item-emoji">🌊</div>
+          <div class="item-name">小樽運河・倉庫群 散策</div>
+        </div>
+        <div class="item-note">運河沿いを歩く。旧手宮線跡地（廃線路の遊歩道）も近くにあり。約1時間。</div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="item-time">16:20</div>
+        <div class="item-main">
+          <div class="item-emoji">⛵</div>
+          <div class="item-name">小樽運河クルーズ 乗船（50分）</div>
+        </div>
+        <div class="item-note">中央橋乗り場。約1,800円。16:20便。荒天中止あり・乗り場は10分前集合。</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="item-time">17:30</div>
+        <div class="item-main">
+          <div class="item-emoji">🚉</div>
+          <div class="item-name">小樽駅へ → 札幌へ帰還</div>
+        </div>
+        <div class="item-note">小樽駅まで徒歩10分。17:45発 → 札幌18:14着。</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="item-time">19:00〜</div>
+        <div class="item-main">
+          <div class="item-emoji">🍜</div>
+          <div class="item-name">ラーメン はるか（元祖さっぽろラーメン横丁）</div>
+          <span class="item-tag warn">行列必至</span>
+        </div>
+        <div class="item-note">⭐4.8 チーズ味噌・スパイシー味噌が絶品。9席のみ。19時台なら少し落ち着いている場合も。並び覚悟で。</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day-section">
+    <div class="day-header">
+      <span class="day-number">Day 03</span>
+      <div class="day-title">札幌 — モエレ沼公園・ラーメン・帰路</div>
+      <div class="day-meta">6/20 SAT</div>
+    </div>
+
+    <div class="transport-note">🏨 ホリデイ・イン＆スイーツ 札幌大通公園より出発　／　大通駅まで徒歩4分</div>
+
+    <!-- 2パターン切り替え -->
+    <div class="pattern-tabs">
+      <button class="pattern-tab active" onclick="switchPattern(this,'d3a')">
+        🅐 モエレ沼 → ラーメン → 帰路
+        <em>1日目に大通を回したパターン</em>
+      </button>
+      <button class="pattern-tab" onclick="switchPattern(this,'d3b')">
+        🅑 大通・どんぐり → モエレ沼 → 帰路
+        <em>3日目に大通を回すパターン</em>
+      </button>
+    </div>
+
+    <!-- パターンA：モエレ中心 -->
+    <div id="pat-d3a" class="pattern-content active">
+
+      <div class="transport-note" style="margin-top:0;">🚌 地下鉄東豊線「環状通東」→ バス 約40〜50分 / タクシー約1,500円</div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="item-time">9:00</div>
+          <div class="item-main"><div class="item-emoji">🏨</div><div class="item-name">ホテル出発</div></div>
+          <div class="item-note">大通駅から地下鉄東豊線「環状通東」まで約8分。バス乗り換えで公園へ。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">10:00〜13:00</div>
+          <div class="item-main"><div class="item-emoji">🌿</div><div class="item-name">モエレ沼公園</div></div>
+          <div class="item-note">イサム・ノグチ設計の189ha。ガラスのピラミッド（無料）・プレイマウンテン・モエレ山（標高62m）が主要スポット。自転車レンタル200円/時あり。</div>
+        </div>
+
+      </div>
+
+      <div class="moere-block">
+        <div class="moere-tabs">
+          <button class="moere-tab active" onclick="switchTab(this, 'walka')">🚶 徒歩プラン</button>
+          <button class="moere-tab" onclick="switchTab(this, 'bikea')">🚲 自転車プラン</button>
+        </div>
+        <div id="tab-walka" class="moere-content active">
+          <div class="moere-route">
+            <div class="route-step"><div class="route-arrow">①</div><div class="route-text"><strong>西ゲート入口</strong><br><span class="route-sub">入場無料。ガラスのピラミッドまで徒歩3分</span></div></div>
+            <div class="route-step"><div class="route-arrow">②</div><div class="route-text"><strong>ガラスのピラミッド（HIDAMARI）</strong><br><span class="route-sub">内部展示無料。休憩に最適。約20分</span></div></div>
+            <div class="route-step"><div class="route-arrow">③</div><div class="route-text"><strong>プレイマウンテン</strong><br><span class="route-sub">三角形の人工山。登頂できる。往復30〜40分</span></div></div>
+            <div class="route-step"><div class="route-arrow">④</div><div class="route-text"><strong>モエレ山（標高62m）</strong><br><span class="route-sub">山頂から札幌市街・石狩平野が一望。登頂約10分</span></div></div>
+            <div class="route-step"><div class="route-arrow">⑤</div><div class="route-text"><strong>西ゲートへ戻る</strong><br><span class="route-sub">合計所要時間 約2.5〜3時間</span></div></div>
+          </div>
+        </div>
+        <div id="tab-bikea" class="moere-content">
+          <div class="moere-route">
+            <div class="route-step"><div class="route-arrow">①</div><div class="route-text"><strong>自転車レンタル</strong><br><span class="route-sub">200円/時。西ゲート・東ゲート近くで借りられる</span></div></div>
+            <div class="route-step"><div class="route-arrow">②</div><div class="route-text"><strong>公園内全スポット制覇</strong><br><span class="route-sub">ガラスのピラミッド→モエレ山→プレイマウンテン→テトラマウンド→海の噴水まで。約1.5〜2時間</span></div></div>
+            <div class="route-step"><div class="route-arrow">③</div><div class="route-text"><strong>12:00頃に公園出発</strong><br><span class="route-sub">徒歩より1時間早く動ける</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="item-time">13:30</div>
+          <div class="item-main"><div class="item-emoji">🚌</div><div class="item-name">バスで市内へ戻る（約40分）</div></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">14:15</div>
+          <div class="item-main"><div class="item-emoji">🏨</div><div class="item-name">ホテルで荷物ピックアップ・チェックアウト</div></div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">15:00〜</div>
+          <div class="item-main"><div class="item-emoji">🍜</div><div class="item-name">ラーメン はるか（元祖さっぽろラーメン横丁）</div><span class="item-tag warn">15時開店直後狙い</span></div>
+          <div class="item-note">⭐4.8 9席・大行列。15時開店直後が最も入りやすい。チーズ味噌 or スパイシー味噌。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">16:30</div>
+          <div class="item-main"><div class="item-emoji">🚃</div><div class="item-name">快速エアポート 乗車</div></div>
+          <div class="item-note">札幌駅17:10発 → 新千歳空港17:07着。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">17:15〜18:00</div>
+          <div class="item-main"><div class="item-emoji">🏚️</div><div class="item-name">千歳アウトレットモール・レラ 廃墟散策</div></div>
+          <div class="item-note">空港から徒歩10分。ほぼ全店閉店した広大なモールをふたりで散策。営業中なのはKrispy Kremeだけという圧倒的なシュールさ。🍩ドーナツを買って締めくくり。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">18:15</div>
+          <div class="item-main"><div class="item-emoji">✈️</div><div class="item-name">空港へ戻る・搭乗手続き</div></div>
+          <div class="item-note">徒歩10分で空港着。帰りの🍦ソフトクリームも忘れずに。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">19:20</div>
+          <div class="item-main"><div class="item-emoji">✈️</div><div class="item-name">IJ836 新千歳発 → 成田 21:05着</div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- パターンB：大通＋どんぐりから始める -->
+    <div id="pat-d3b" class="pattern-content">
+
+      <div class="timeline">
+
+        <div class="timeline-item highlight">
+          <div class="item-time">9:00〜10:00</div>
+          <div class="item-main"><div class="item-emoji">🥐</div><div class="item-name">どんぐり 大通店 ＋ 大通公園 散策</div></div>
+          <div class="item-note">ホテルから徒歩2分。⭐4.4 好きなパンを選んで大通公園のベンチへ。テレビ塔・噴水を眺めながら朝ごはん代わりに。開店10:00〜。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">10:15</div>
+          <div class="item-main"><div class="item-emoji">🏨</div><div class="item-name">ホテルチェックアウト・荷物預け</div></div>
+          <div class="item-note">大通駅から地下鉄東豊線「環状通東」→バスでモエレ沼へ。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">11:00〜13:30</div>
+          <div class="item-main"><div class="item-emoji">🌿</div><div class="item-name">モエレ沼公園</div></div>
+          <div class="item-note">自転車レンタルなら2時間半で全制覇可。徒歩なら主要3スポット（ガラスのピラミッド・プレイマウンテン・モエレ山）に絞る。</div>
+        </div>
+
+      </div>
+
+      <div class="moere-block">
+        <div class="moere-tabs">
+          <button class="moere-tab active" onclick="switchTab(this, 'walkb')">🚶 徒歩プラン</button>
+          <button class="moere-tab" onclick="switchTab(this, 'bikeb')">🚲 自転車プラン</button>
+        </div>
+        <div id="tab-walkb" class="moere-content active">
+          <div class="moere-route">
+            <div class="route-step"><div class="route-arrow">①</div><div class="route-text"><strong>ガラスのピラミッド（HIDAMARI）</strong><br><span class="route-sub">内部展示無料。約20分</span></div></div>
+            <div class="route-step"><div class="route-arrow">②</div><div class="route-text"><strong>プレイマウンテン</strong><br><span class="route-sub">三角形の人工山。往復30〜40分</span></div></div>
+            <div class="route-step"><div class="route-arrow">③</div><div class="route-text"><strong>モエレ山（標高62m）</strong><br><span class="route-sub">山頂から一望。登頂約10分</span></div></div>
+            <div class="route-step"><div class="route-arrow">④</div><div class="route-text"><strong>13:30頃に出発</strong><br><span class="route-sub">合計約2.5時間</span></div></div>
+          </div>
+        </div>
+        <div id="tab-bikeb" class="moere-content">
+          <div class="moere-route">
+            <div class="route-step"><div class="route-arrow">①</div><div class="route-text"><strong>自転車レンタル 200円/時</strong><br><span class="route-sub">西ゲート・東ゲート近く</span></div></div>
+            <div class="route-step"><div class="route-arrow">②</div><div class="route-text"><strong>全スポット制覇</strong><br><span class="route-sub">ガラスのピラミッド→モエレ山→プレイマウンテン→テトラマウンド→海の噴水。約1.5〜2時間</span></div></div>
+            <div class="route-step"><div class="route-arrow">③</div><div class="route-text"><strong>13:00頃に出発可能</strong><br><span class="route-sub">徒歩より30分早い</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="item-time">14:15</div>
+          <div class="item-main"><div class="item-emoji">🏨</div><div class="item-name">ホテルで荷物ピックアップ</div></div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">15:00〜</div>
+          <div class="item-main"><div class="item-emoji">🍜</div><div class="item-name">ラーメン はるか（元祖さっぽろラーメン横丁）</div><span class="item-tag warn">15時開店直後狙い</span></div>
+          <div class="item-note">⭐4.8 9席・大行列。15時開店直後が最も入りやすい。チーズ味噌 or スパイシー味噌。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">16:30</div>
+          <div class="item-main"><div class="item-emoji">🚃</div><div class="item-name">快速エアポート 乗車</div></div>
+          <div class="item-note">札幌駅17:10発 → 新千歳空港17:47着。</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="item-time">17:15〜18:00</div>
+          <div class="item-main"><div class="item-emoji">🏚️</div><div class="item-name">千歳アウトレットモール・レラ 廃墟散策</div></div>
+          <div class="item-note">空港から徒歩10分。ほぼ全店閉店した広大なモールをふたりで散策。営業中なのはKrispy Kremeだけという圧倒的なシュールさ。🍩ドーナツを買って締めくくり。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">18:15</div>
+          <div class="item-main"><div class="item-emoji">🛫</div><div class="item-name">空港へ戻る・搭乗手続き</div></div>
+          <div class="item-note">徒歩10分で空港着。帰りの🍦ソフトクリームも忘れずに。</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-time">19:20</div>
+          <div class="item-main"><div class="item-emoji">✈️</div><div class="item-name">IJ836 新千歳発 → 成田 21:05着</div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <div class="section-divider"><span></span><em>事前チェック</em><span></span></div>
+
+  <div class="checklist-section">
+    <div class="checklist-title">
+      📋 出発前にやること
+    </div>
+    <div class="checklist-grid" id="checklist">
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <div class="check-text">
+          ガラス工房NAKAMORI 電話予約
+          <span class="check-sub">6/19 11:30〜 の枠で。日曜定休</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <div class="check-text">
+          小樽運河クルーズ 便確認
+          <span class="check-sub">15:30 or 16:20 便。荒天中止あり</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <div class="check-text">
+          藻岩山ロープウェイ 運行確認
+          <span class="check-sub">6/20 朝に公式サイトで確認。強風で運休あり</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <div class="check-text">
+          ホテル チェックイン時間確認
+          <span class="check-sub">荷物預かり可かも確認しておく</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <div class="check-text">
+          Suica / IC カード残高確認
+          <span class="check-sub">市電・JR・地下鉄すべて使う</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <div class="check-text">
+          といまぐろ 営業状況チェック
+          <span class="check-sub">人気店につき臨時休業の可能性</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  Sapporo · Otaru · June 2025 — 旅のしおり
+</footer>
+
+<script>
+  function toggleCheck(el) {
+    el.classList.toggle('done');
+  }
+
+  function switchTab(btn, tabId) {
+    const block = btn.closest('.moere-block');
+    block.querySelectorAll('.moere-tab').forEach(t => t.classList.remove('active'));
+    block.querySelectorAll('.moere-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
+  }
+
+  function switchPattern(btn, patId) {
+    const section = btn.closest('.day-section');
+    section.querySelectorAll('.pattern-tab').forEach(t => t.classList.remove('active'));
+    section.querySelectorAll('.pattern-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('pat-' + patId).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
