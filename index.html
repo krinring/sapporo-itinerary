@@ -18,3 +18,37 @@
 </style>
 </head>
 <body>
+<div class="box">
+  <div class="title">旅のしおり</div>
+  <div class="sub">Enter Password to View</div>
+  <input type="password" id="pw" placeholder="· · · · · · · ·" autofocus>
+  <button onclick="unlock()">開く</button>
+  <div class="err" id="err"></div>
+</div>
+<script>
+const SALT='83bP2yeMEW7J9oGAKQroyQ==',IV='X4QmiC3rxPup/pD4',CT='JG3My/GTvqNWtlYRaP6iIxS00cNZ2wRiF+pgoLE2iWkPvTDzdcF3GIkEcDSLq2/gXIv1uKdLXaEczT+PUeOb1srl3qTNkhftrLz6TxzgQ8OS09o8ar8JsMD/TwX88K7wW9+vDZJfS8qvTgq5P9PF+KF3M+7CUjXpJ/CiGJsv/aYVCJKkIAA0CaX9rTCumgPyW6Pb5i8MJQFt1nrMoNi4NiXgwGOAJ/WN8X+5sNvv6YJ1TKFJLVfSmpQnWg0eSFQ6K2VBdMGR2GIb3HWPQaMVuJiuvdDqv1FzY5MbPHCWQWkdAm7dSWHmrJFPTv8s0FGMYOdVKMx1nSHixl+RpoxZ2/QiDHRuB2A8RIRjTiDSKIaHvSbVNOc8fW7BLmq/4yGkJ7QODCF9r/ABTEXNVSTXFiNO2KJUz2nqRi3V0+GWXTMfC+qQHbZ5bE1V/klJCBsX6mzWMJDmfHe3TgCl0o9KMFj9QqnXCKw8a6yJi7qx7YMaolKO9Zj3X7PMpU0vGjqR+bQfVPr2tFpslN41lnZ6UQ2JtL7TdvhW8JXXFh4MU0RdaE7t8V3ZuWCU6fM2TRKi5dxFKJy3Nf7CeOZ4YVMpL9LKq4fhZxqDqnVSvQhI2UIqOXvLWQ9WPqUmT6C4ZHY0VOrX5z7G0BNzTxkiTpCPWg5sRfCaWQ2XsBVNaQ5A9hLg0nVYTQb5TqUSjOpOvaqjnPHqBdUiL6SFcMrVRfuFJdUDNSPsKr3gDVqgUiBf9p7dIoJYQ0WBMDdmkJWJ14A9P8gLbKYfLrT9NLRrfXoOtCrWqe7N2kiuP5JL4YHhRdFr6Xnz0Tz7J5U+gL9aUXnpHJrPmWTaJH2DX5CbUw5YHPM3Z1Uyy97D6G0vJRd8lKMBLFmfJqVCIbOQcq1/DUEk7N2rOLwfIV/4YXlGq0mOaWJu7cRFxmf5P5r8K2uBWkGb0XHRBpQMBZCE2OsKGP5I2bShvXPL3VW4UaVD9JjhHY1f1DRH0sJmwV7WLGK1jqR5RaQqU5BxFqR5JKQsHUTCEJmR7T0XDVM9t0KvWJXy8eR+OiXaH3IuGJJ/ICkP/4BPZL7FHkO7LJRLe5XGHxPdCjGWC0V6ZFH2HPjCG9S6Jjn+U8gqkC4BLQv7Q1uHK2Y6iT4oFp1gJ/7eOhEaDMUJ6lq1B5jKV3HLYpRFr9Ql8XT0BkDfT4kV5WO0N5sVFCdW3GJhDq2HpJRJ8aKpbM1A9TQpJHKiByLuZkZRjc6WqoFlrPJYpBO2Jnq/Ij4PGRQ7MeXxTTB6dNLPQVYJl9MqzZV1JXE0J8hC0MtPKhN9XVbVWiGR0TJpYz2ZD4kHJZHZVK0fBQlmM0Q0JpWL7F9IQkHKNqe1gT9O1UdF7oXmkT8hL7Pg5u7MtGKpP9xPcXpqhLHBX4TmM6WJF2pxCFbQrJ2IJm/6GJoRBgGlIMmR1WTOtV3wJiJLNQ6h9JrXLVWoJ7fQqiKVKe5FSDZ1iZ6YFPQ8xHVRiF5bMDKYGBTiPFkrJMmQBqN1NQ2JKRO7pQY8MWJ9aXpJ2m0JiMXqT0LFqO3V9PNQJL5l6rT4Z7HbMsTKJWV2HiXQKJlPNQJC4rLBbMTWmO6WJXgqoQjFpRqHoL4FhRINJP5NmqJRWX8FRJCjMqYVL3MJP7WVqO8fQJpF5gNQKmZj9r0RJXLY5fNJQK2bMBP8RJNQ1LWK7qQJRXLp5bNQJC4rLBbMTWmO6WJXgqoQjFpRqHoL4FhRINJP5NmqJRWX8FRJCjMqYVL3MJP7WVqO8fQJpF5gNQKmZj9r0RJXLY5fNJQK2bMBP8RJNQ1LWK7qQJRXLp5bNQJC4rLBbMTWmO6WJXgqoQjFpRqHoL4FhRINJP5NmqJRWX8FRJCjMqYVL3MJP7WVqO8fQJpF5gNQKmZj9r0RJXLY5fNJQK2bMBP8RJNQ1LWK7qQJRXLp5b';
+
+function b64buf(s){const b=atob(s),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a}
+
+async function unlock(){
+  const pw=document.getElementById('pw').value;
+  try{
+    const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+    const key=await crypto.subtle.deriveKey(
+      {name:'PBKDF2',salt:b64buf(SALT),iterations:100000,hash:'SHA-256'},
+      km,{name:'AES-GCM',length:256},false,['decrypt']
+    );
+    const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64buf(IV)},key,b64buf(CT));
+    const html=new TextDecoder().decode(plain);
+    document.open();document.write(html);document.close();
+  }catch{
+    document.getElementById('err').textContent='パスワードが違います';
+    document.getElementById('pw').value='';
+    document.getElementById('pw').focus();
+  }
+}
+
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+</script>
+</body>
+</html>
