@@ -646,9 +646,91 @@
     .day-header { flex-wrap: wrap; gap: 10px; }
     .checklist-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── PASSWORD OVERLAY ── */
+  #pw-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #pw-overlay.hidden { display: none; }
+  .pw-box {
+    text-align: center;
+    padding: 48px 40px;
+    border: 1px solid rgba(245,240,232,0.15);
+    max-width: 360px;
+    width: 90%;
+  }
+  .pw-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+  }
+  .pw-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .pw-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(245,240,232,0.2);
+    color: var(--paper);
+    font-family: 'DM Mono', monospace;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    text-align: center;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+  }
+  .pw-input:focus { border-color: rgba(196,98,45,0.6); }
+  .pw-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .pw-btn:hover { opacity: 0.85; }
+  .pw-error {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-light);
+    margin-top: 10px;
+    letter-spacing: 0.08em;
+    min-height: 16px;
+  }
 </style>
 </head>
 <body>
+
+<!-- PASSWORD OVERLAY -->
+<div id="pw-overlay">
+  <div class="pw-box">
+    <div class="pw-title">旅のしおり</div>
+    <div class="pw-sub">Enter Password to View</div>
+    <input type="password" class="pw-input" id="pw-input" placeholder="· · · · · · · ·" autofocus>
+    <button class="pw-btn" onclick="checkPw()">開く</button>
+    <div class="pw-error" id="pw-error"></div>
+  </div>
+</div>
 
 <!-- COVER -->
 <header class="cover">
@@ -1261,22 +1343,45 @@
 </footer>
 
 <script>
+  (function() {
+    if (sessionStorage.getItem('itinerary_auth') === '1') {
+      var overlay = document.getElementById('pw-overlay');
+      if (overlay) overlay.classList.add('hidden');
+    }
+  })();
+
+  function checkPw() {
+    var input = document.getElementById('pw-input').value;
+    if (input === 'kirinogi') {
+      sessionStorage.setItem('itinerary_auth', '1');
+      document.getElementById('pw-overlay').classList.add('hidden');
+    } else {
+      document.getElementById('pw-error').textContent = 'パスワードが違います';
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').focus();
+    }
+  }
+
+  document.getElementById('pw-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPw();
+  });
+
   function toggleCheck(el) {
     el.classList.toggle('done');
   }
 
   function switchTab(btn, tabId) {
-    const block = btn.closest('.moere-block');
-    block.querySelectorAll('.moere-tab').forEach(t => t.classList.remove('active'));
-    block.querySelectorAll('.moere-content').forEach(c => c.classList.remove('active'));
+    var block = btn.closest('.moere-block');
+    block.querySelectorAll('.moere-tab').forEach(function(t) { t.classList.remove('active'); });
+    block.querySelectorAll('.moere-content').forEach(function(c) { c.classList.remove('active'); });
     btn.classList.add('active');
     document.getElementById('tab-' + tabId).classList.add('active');
   }
 
   function switchPattern(btn, patId) {
-    const section = btn.closest('.day-section');
-    section.querySelectorAll('.pattern-tab').forEach(t => t.classList.remove('active'));
-    section.querySelectorAll('.pattern-content').forEach(c => c.classList.remove('active'));
+    var section = btn.closest('.day-section');
+    section.querySelectorAll('.pattern-tab').forEach(function(t) { t.classList.remove('active'); });
+    section.querySelectorAll('.pattern-content').forEach(function(c) { c.classList.remove('active'); });
     btn.classList.add('active');
     document.getElementById('pat-' + patId).classList.add('active');
   }
